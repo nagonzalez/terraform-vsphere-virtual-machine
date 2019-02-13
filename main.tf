@@ -18,7 +18,7 @@ data "vsphere_network" "network" {
 }
 
 data "vsphere_virtual_machine" "template" {
-  name          = "${var.template_name}"
+  name          = "${var.template}"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
 
@@ -57,7 +57,7 @@ resource "vsphere_virtual_machine" "linux_vm_with_data" {
     customize {
       linux_options {
         host_name = "${var.count == 1 ? var.role : "${var.role}${count.index + 1}"}"
-        domain    = "${var.domain_name}"
+        domain    = "${var.domain}"
       }
 
       network_interface {}
