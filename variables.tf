@@ -3,9 +3,11 @@ variable "count" {
 }
 
 variable "cluster" {}
+
 variable "data_size_gb" {
   default = "0"
 }
+
 variable "datacenter" {}
 variable "datastore" {}
 variable "domain" {}
