@@ -76,7 +76,7 @@ resource "vsphere_virtual_machine" "windows_vm_with_data" {
   memory   = "${var.memory}"
 
   guest_id = "${var.guest_id}"
-  firmware = "EFI"
+  firmware = "efi"
 
   tags = ["${vsphere_tag.role_name.id}"]
 
