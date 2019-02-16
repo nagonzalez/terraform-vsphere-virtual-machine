@@ -10,7 +10,9 @@ variable "data_size_gb" {
 
 variable "datacenter" {}
 variable "datastore" {}
-variable "domain" {}
+variable "domain" {
+  default = ""
+}
 variable "folder" {}
 variable "guest_id" {}
 variable "memory" {}
@@ -20,3 +22,6 @@ variable "os_type" {}
 variable "role_category_id" {}
 variable "role" {}
 variable "template" {}
+variable "workgroup" {
+  default = ""
+}

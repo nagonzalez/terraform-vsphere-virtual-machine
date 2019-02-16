@@ -103,7 +103,7 @@ resource "vsphere_virtual_machine" "windows_vm_with_data" {
     customize {
       windows_options {
         computer_name = "${var.count == 1 ? var.role : "${var.role}${count.index + 1}"}"
-        domain        = "${var.domain}"
+        workgroup     = "${var.workgroup}"
       }
 
       network_interface {}
