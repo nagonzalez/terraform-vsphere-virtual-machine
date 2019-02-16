@@ -24,7 +24,7 @@ data "vsphere_virtual_machine" "template" {
 
 resource "vsphere_virtual_machine" "linux_vm_with_data" {
   name             = "${var.count == 1 ? var.role : "${var.role}${count.index + 1}"}"
-  count            = "${var.count}"
+  count            = "${var.os_type == "linux" && var.data_size_gb != "0" ? var.count : 0}"
   folder           = "${var.folder}"
   resource_pool_id = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
   datastore_id     = "${data.vsphere_datastore.datastore.id}"
@@ -42,7 +42,7 @@ resource "vsphere_virtual_machine" "linux_vm_with_data" {
 
   disk {
     label = "root"
-    size  = "${var.root_size_gb}"
+    size  = "40"
   }
 
   disk {
