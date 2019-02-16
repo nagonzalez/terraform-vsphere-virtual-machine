@@ -17,5 +17,4 @@ variable "num_cpus" {}
 variable "os_type" {}
 variable "role_category_id" {}
 variable "role" {}
-variable "root_size_gb" {}
 variable "template" {}
