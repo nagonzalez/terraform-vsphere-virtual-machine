@@ -84,7 +84,7 @@ resource "vsphere_virtual_machine" "windows_vm_with_data" {
     network_id   = "${data.vsphere_network.network.id}"
   }
 
-  scsi_type = "lsisas1068"
+  scsi_type = "lsilogic-sas"
 
   disk {
     label = "root"
