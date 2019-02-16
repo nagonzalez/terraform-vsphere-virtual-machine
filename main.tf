@@ -74,6 +74,7 @@ resource "vsphere_virtual_machine" "windows_vm_with_data" {
 
   num_cpus = "${var.num_cpus}"
   memory   = "${var.memory}"
+  bios     = "EFI"
 
   guest_id = "${var.guest_id}"
 
