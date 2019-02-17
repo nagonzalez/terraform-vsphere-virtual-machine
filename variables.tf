@@ -19,6 +19,7 @@ variable "memory" {}
 variable "network" {}
 variable "num_cpus" {}
 variable "os_type" {}
+variable "os_type_category_id" {}
 variable "role_category_id" {}
 variable "role" {}
 variable "template" {}

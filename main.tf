@@ -116,3 +116,8 @@ resource "vsphere_tag" "role_name" {
   name        = "${var.role}"
   category_id = "${var.role_category_id}"
 }
+
+resource "vsphere_tag" "os_type" {
+  name        = "${var.os_type}"
+  category_id = "${var.os_type_category_id}"
+}
