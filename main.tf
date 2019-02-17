@@ -34,7 +34,10 @@ resource "vsphere_virtual_machine" "linux_vm_with_data" {
 
   guest_id = "${var.guest_id}"
 
-  tags = ["${vsphere_tag.role_name.id}"]
+  tags = [
+    "${vsphere_tag.os_type.id}",
+    "${vsphere_tag.role_name.id}"
+    ]
 
   network_interface {
     network_id = "${data.vsphere_network.network.id}"
