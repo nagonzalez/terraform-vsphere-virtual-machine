@@ -78,7 +78,10 @@ resource "vsphere_virtual_machine" "windows_vm_with_data" {
   guest_id = "${var.guest_id}"
   firmware = "efi"
 
-  tags = ["${vsphere_tag.role_name.id}"]
+  tags = [
+    "${vsphere_tag.os_type.id}",
+    "${vsphere_tag.role_name.id}"
+    ]
 
   network_interface {
     adapter_type = "e1000e"
