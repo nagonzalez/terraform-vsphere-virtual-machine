@@ -62,8 +62,10 @@ resource "vsphere_virtual_machine" "linux_vm_with_data" {
         host_name = "${var.count == 1 ? var.role : "${var.role}${count.index + 1}"}"
         domain    = "${var.domain}"
       }
-
+      
       network_interface {}
+
+      dns_suffix_list = ["${var.domain}"]
     }
   }
 }
