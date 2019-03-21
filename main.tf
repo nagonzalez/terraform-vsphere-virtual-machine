@@ -22,6 +22,11 @@ data "vsphere_virtual_machine" "template" {
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
 
+data "vsphere_tag" "os_type" {
+  name        = "${var.os_type}"
+  category_id = "${var.os_type_category_id}"
+}
+
 resource "vsphere_virtual_machine" "linux_vm_with_data" {
   name             = "${var.count == 1 ? var.role : "${var.role}${count.index + 1}"}"
   count            = "${var.os_type == "linux" && var.data_size_gb != "0" ? var.count : 0}"
@@ -35,7 +40,7 @@ resource "vsphere_virtual_machine" "linux_vm_with_data" {
   guest_id = "${var.guest_id}"
 
   tags = [
-    "${vsphere_tag.os_type.id}",
+    "${data.vsphere_tag.os_type.id}",
     "${vsphere_tag.role_name.id}"
     ]
 
@@ -84,7 +89,7 @@ resource "vsphere_virtual_machine" "windows_vm_with_data" {
   firmware = "efi"
 
   tags = [
-    "${vsphere_tag.os_type.id}",
+    "${data.vsphere_tag.os_type.id}",
     "${vsphere_tag.role_name.id}"
     ]
 
@@ -123,9 +128,4 @@ resource "vsphere_virtual_machine" "windows_vm_with_data" {
 resource "vsphere_tag" "role_name" {
   name        = "${var.role}"
   category_id = "${var.role_category_id}"
-}
-
-resource "vsphere_tag" "os_type" {
-  name        = "${var.os_type}"
-  category_id = "${var.os_type_category_id}"
 }
