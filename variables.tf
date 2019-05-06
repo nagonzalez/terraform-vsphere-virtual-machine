@@ -10,9 +10,11 @@ variable "data_size_gb" {
 
 variable "datacenter" {}
 variable "datastore" {}
+
 variable "domain" {
   default = ""
 }
+
 variable "folder" {}
 variable "guest_id" {}
 variable "memory" {}
@@ -23,6 +25,21 @@ variable "os_type_category_id" {}
 variable "role_category_id" {}
 variable "role" {}
 variable "template" {}
+
 variable "workgroup" {
   default = ""
 }
+
+variable "netmask" {}
+
+variable "ips" {
+  type    = "list"
+  default = []
+}
+
+variable "dns_server_list" {
+  type    = "list"
+  default = []
+}
+
+variable "gateway" {}
