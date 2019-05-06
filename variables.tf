@@ -30,7 +30,9 @@ variable "workgroup" {
   default = ""
 }
 
-variable "netmask" {}
+variable "netmask" {
+  default = ""
+}
 
 variable "ips" {
   type    = "list"
@@ -42,4 +44,6 @@ variable "dns_server_list" {
   default = []
 }
 
-variable "gateway" {}
+variable "gateway" {
+  default = ""
+}
