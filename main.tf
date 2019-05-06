@@ -28,7 +28,7 @@ data "vsphere_tag" "os_type" {
 }
 
 resource "vsphere_virtual_machine" "linux_vm_with_data_dhcp" {
-  name             = "${var.count == 1 ? var.role : "${var.role}${count.index}"}"
+  name             = "${var.count == 1 ? var.role : "${var.role}-${count.index}"}"
   count            = "${var.os_type == "linux" && var.data_size_gb != "0" && length(var.ips) == 0 ? var.count : 0}"
   folder           = "${var.folder}"
   resource_pool_id = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
@@ -64,7 +64,7 @@ resource "vsphere_virtual_machine" "linux_vm_with_data_dhcp" {
 
     customize {
       linux_options {
-        host_name = "${var.count == 1 ? var.role : "${var.role}${count.index}"}"
+        host_name = "${var.count == 1 ? var.role : "${var.role}-${count.index}"}"
         domain    = "${var.domain}"
       }
 
@@ -76,7 +76,7 @@ resource "vsphere_virtual_machine" "linux_vm_with_data_dhcp" {
 }
 
 resource "vsphere_virtual_machine" "linux_vm_with_data_static" {
-  name             = "${var.count == 1 ? var.role : "${var.role}${count.index}"}"
+  name             = "${var.count == 1 ? var.role : "${var.role}-${count.index}"}"
   count            = "${var.os_type == "linux" && var.data_size_gb != "0" && length(var.ips) > 0 ? var.count : 0}"
   folder           = "${var.folder}"
   resource_pool_id = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
@@ -112,7 +112,7 @@ resource "vsphere_virtual_machine" "linux_vm_with_data_static" {
 
     customize {
       linux_options {
-        host_name = "${var.count == 1 ? var.role : "${var.role}${count.index}"}"
+        host_name = "${var.count == 1 ? var.role : "${var.role}-${count.index}"}"
         domain    = "${var.domain}"
       }
 
